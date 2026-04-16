@@ -1,0 +1,44 @@
+{
+  "name": "blender-3d-platform",
+  "version": "1.0.0",
+  "description": "A 3D modeling platform with Three.js and React",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/index.js",
+    "client": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "install-all": "npm install && cd client && npm install"
+  },
+  "keywords": [
+    "3d",
+    "modeling",
+    "threejs",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-react": "^7.28.5",
+    "babel-loader": "^10.1.1",
+    "concurrently": "^8.2.0",
+    "css-loader": "^7.1.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.6",
+    "nodemon": "^3.0.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.106.2",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3"
+  }
+}
