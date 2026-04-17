@@ -4,7 +4,8 @@ const path = require('path');
 const projectRoutes = require('./routes/projects');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
+console.log('Starting server on port', PORT);
 
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));

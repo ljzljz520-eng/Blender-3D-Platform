@@ -15,6 +15,7 @@ function Viewport() {
     rendererRef,
     controlsRef,
     transformControlRef,
+    objectsRef,
     selectedObject,
     setSelectedObject,
     objects,
@@ -92,7 +93,7 @@ function Viewport() {
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
 
       raycaster.setFromCamera(mouse, camera);
-      const meshObjects = objects.filter(obj => obj.isMesh);
+      const meshObjects = objectsRef.current.filter(obj => obj.isMesh);
       const intersects = raycaster.intersectObjects(meshObjects);
 
       if (intersects.length > 0) {

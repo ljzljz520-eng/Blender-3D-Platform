@@ -9,6 +9,7 @@ export function SceneProvider({ children }) {
   const rendererRef = useRef(null);
   const controlsRef = useRef(null);
   const transformControlRef = useRef(null);
+  const objectsRef = useRef([]);
   
   const [selectedObject, setSelectedObject] = useState(null);
   const [objects, setObjects] = useState([]);
@@ -21,11 +22,19 @@ export function SceneProvider({ children }) {
   });
 
   const addObject = useCallback((mesh) => {
-    setObjects(prev => [...prev, mesh]);
+    setObjects(prev => {
+      const newObjects = [...prev, mesh];
+      objectsRef.current = newObjects;
+      return newObjects;
+    });
   }, []);
 
   const removeObject = useCallback((uuid) => {
-    setObjects(prev => prev.filter(obj => obj.uuid !== uuid));
+    setObjects(prev => {
+      const newObjects = prev.filter(obj => obj.uuid !== uuid);
+      objectsRef.current = newObjects;
+      return newObjects;
+    });
     setSelectedObject(prev => prev && prev.uuid === uuid ? null : prev);
   }, []);
 
@@ -64,6 +73,7 @@ export function SceneProvider({ children }) {
     rendererRef,
     controlsRef,
     transformControlRef,
+    objectsRef,
     selectedObject,
     setSelectedObject,
     objects,
